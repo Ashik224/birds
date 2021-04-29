@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="birds:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>birds</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="birds-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="birds:war exploded" />
+    </root>
+  </artifact>
+</component>
