@@ -1,0 +1,12 @@
+.navbar-nav > li{
+    padding-left:30px;
+    padding-right:30px;
+}
+
+.bggreen {
+    background: #9400d3;
+}
+
+#navbarSupportedContent > ul > li > a {
+    color: white;
+}

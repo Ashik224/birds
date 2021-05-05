@@ -1,13 +1,44 @@
+<%@ page import="com.example.BirdInfo" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World!</title>
+    <title>Home Page</title>
+    <jsp:include page="cssLoader.jsp"/>
 </head>
 <body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
+    <jsp:include page="/hello"/>
+<%--    <%--%>
+<%--        List<BirdInfo> info = (List<BirdInfo>) request.getAttribute("birdInfo");--%>
+<%--    %>--%>
+
+    <div class="container" align="center">
+        <br/><br/><br/>
+    <iframe width="853" height="480" src="https://www.youtube.com/embed/a1wp1RnC7kk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        <div class="row">
+            <c:forEach var="bird" items="${birdInfo}">
+
+                <div class="col-sm-4">
+                    <br/><br/><br/><br/>
+                    <div class="card">
+                        <img width="286" height="180" class="card-img-top" src="./uploadedFiles/${bird.getRealImage()}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">${bird.getName()}</h5>
+                            <p class="card-text">${bird.getCategory()}</p>
+                            <form action="details" method="post">
+                                <input type="hidden" name="scientificName" value="${bird.getScientificName()}">
+                                <button class="btn btn-primary"> View Details</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
+
+    </div>
 </body>
 </html>
