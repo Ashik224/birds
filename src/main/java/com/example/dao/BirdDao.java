@@ -40,7 +40,6 @@ public class BirdDao {
 
     public BirdInfo retrieve(String sciName) throws SQLException, ClassNotFoundException {
         Connection connection = database.getConnection();
-        byte[] imgData = null;
         BirdInfo birdInfo = null;
 
         String query = "select * from birdInfo where scientificName = ?";
@@ -49,13 +48,14 @@ public class BirdDao {
         ResultSet rs = preparedStatement.executeQuery();
 
         if(rs.next()) {
+            int id = rs.getInt(1);
             String name = rs.getString(2);
             String category = rs.getString(4);
             String region = rs.getString(5);
             String description = rs.getString(6);
             String image = rs.getString(7);
 
-            birdInfo = new BirdInfo(name,sciName,category,region,description,image);
+            birdInfo = new BirdInfo(id,name,sciName,category,region,description,image);
         }
         return birdInfo;
     }
@@ -71,6 +71,7 @@ public class BirdDao {
         ResultSet rs = preparedStatement.executeQuery();
 
         while(rs.next()) {
+            int id = rs.getInt(1);
             String name = rs.getString(2);
             String scientificName = rs.getString(3);
             String category = rs.getString(4);
@@ -78,7 +79,7 @@ public class BirdDao {
             String description = rs.getString(6);
             String image = rs.getString(7);
 
-            info.add(new BirdInfo(name, scientificName, category, region, description, image));
+            info.add(new BirdInfo(id, name, scientificName, category, region, description, image));
             count++;
         }
         return info;
@@ -91,5 +92,28 @@ public class BirdDao {
         preparedStatement.setString(1, scientific);
         int count = preparedStatement.executeUpdate();
         System.out.println("Count: "+count);
+    }
+
+    public void update(BirdInfo birdInfo) throws SQLException, ClassNotFoundException {
+        int id = birdInfo.getId();
+        String name = birdInfo.getName();
+        String scientificName = birdInfo.getScientificName();
+        String category = birdInfo.getCategory();
+        String region = birdInfo.getRegion();
+        String description = birdInfo.getDescription();
+        String image = birdInfo.getRealImage();
+
+        Connection connection = database.getConnection();
+        String query = "update birdInfo set birdName = ? , scientificName = ? , category = ? , region = ? , description = ? , birdImage = ? where id = ?";
+        PreparedStatement st = connection.prepareStatement(query);
+        st.setString(1, name);
+        st.setString(2, scientificName);
+        st.setString(3, category);
+        st.setString(4, region);
+        st.setString(5, description);
+        st.setString(6, image);
+        st.setInt(7, id);
+
+        int count = st.executeUpdate();
     }
 }

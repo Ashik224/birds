@@ -29,7 +29,7 @@
      <h4>Region: <b><%=region%></b></h4>
      <p><%=description%></p>
      <br/><br/>
-     <form action="" method="post">
+     <form action="retrieveForUpdate" method="post">
          <input type="hidden" name="scientific" value="<%=scientificName%>">
          <input type="submit" class="btn btn-success" value="Update">
      </form>

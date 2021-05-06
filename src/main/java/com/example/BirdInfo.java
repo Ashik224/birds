@@ -3,12 +3,23 @@ package com.example;
 import java.io.InputStream;
 
 public class BirdInfo {
+    private  int id;
     private String name;
     private String scientificName;
     private String category;
     private String region;
     private String description;
     private String realImage;
+
+    public BirdInfo(int id, String name, String scientificName, String category, String region, String description, String realImage) {
+        this.id = id;
+        this.name = name;
+        this.scientificName = scientificName;
+        this.category = category;
+        this.region = region;
+        this.description = description;
+        this.realImage = realImage;
+    }
 
     public BirdInfo(String name, String scientificName, String category, String region, String description, String realImage) {
         this.name = name;
@@ -21,6 +32,10 @@ public class BirdInfo {
 
     public BirdInfo() {
 
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
