@@ -14,7 +14,7 @@
 <body>
 <div class="container" align="center">
     <br/><br/><br/>
-<form action="" method="post">
+<form action="login" method="post">
     <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">

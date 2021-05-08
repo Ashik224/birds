@@ -114,6 +114,32 @@ public class BirdDao {
         st.setString(6, image);
         st.setInt(7, id);
 
-        int count = st.executeUpdate();
+        st.executeUpdate();
+    }
+
+    public List<BirdInfo> retrieveSearch(String searchData) throws SQLException, ClassNotFoundException {
+        List<BirdInfo> birdInfoList = new ArrayList<>();
+        Connection connection = database.getConnection();
+        searchData = searchData
+                .replace("!", "!!")
+                .replace("%", "!%")
+                .replace("_", "!_")
+                .replace("[", "![");
+        String query = "select * from birdInfo where birdName LIKE ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, searchData + "%");
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+            int id = rs.getInt(1);
+            String name = rs.getString(2);
+            String scientificName = rs.getString(3);
+            String category = rs.getString(4);
+            String region = rs.getString(5);
+            String description = rs.getString(6);
+            String image = rs.getString(7);
+
+            birdInfoList.add(new BirdInfo(id, name, scientificName, category, region, description, image));
+        }
+        return birdInfoList;
     }
 }

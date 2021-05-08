@@ -13,6 +13,15 @@
     <jsp:include page="cssLoader.jsp"/>
 </head>
 <body>
+<%
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    response.setHeader("Pragma", "no-cache");
+    response.setHeader("Expires", "0");
+
+    if(session.getAttribute("username") == null) {
+        response.sendRedirect("login.jsp");
+    }
+%>
 <div class="container">
     <br/> <br/><br/>
     <form action="insert" method="post" enctype="multipart/form-data">
@@ -54,11 +63,6 @@
             <label for="description">Description</label>
             <textarea class="form-control" name="description" id="description" rows="7" placeholder="Description"></textarea>
         </div> <br/>
-
-<%--        <div class="custom-file">--%>
-<%--            <input type="file" class="custom-file-input" name="birdImg" id="customFile" accept="image/x-png,image/jpeg">--%>
-<%--            <label class="custom-file-label" for="customFile">Choose Image</label>--%>
-<%--        </div>--%>
 <br/> <br/> <br/>
 
         <input type="file" name="birdImg"/>

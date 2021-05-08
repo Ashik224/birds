@@ -28,14 +28,28 @@
                         <li class="nav-item">
                             <a class="nav-link" href="about">About</a>
                         </li>
+                        <%
+                            if(session.getAttribute("username") == null) {
+                        %>
                         <li class="nav-item">
                             <a class="nav-link" href="login.jsp">Login</a>
                         </li>
+                        <%
+                            } else {
+                        %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="logout">Logout</a>
+                        </li>
+                        <%
+                            }
+                        %>
                     </ul>
+                    <form action="search" method="post">
                     <ul class="navbar-nav ms-auto">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control me-2" type="search" name="search" placeholder="Search by Name" aria-label="Search">
                         <button class="btn btn-dark" type="submit">Search</button>
                     </ul>
+                    </form>
                 </div>
             </div>
         </nav>

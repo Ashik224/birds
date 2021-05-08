@@ -13,6 +13,13 @@
 </head>
 <body>
     <%
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        response.setHeader("Pragma", "no-cache");
+        response.setHeader("Expires", "0");
+
+        if(session.getAttribute("username") == null) {
+            response.sendRedirect("login.jsp");
+        }
         String name = request.getAttribute("name").toString();
         String scientificName = request.getAttribute("scientificName").toString();
         String category = request.getAttribute("category").toString();
@@ -33,10 +40,16 @@
          <input type="hidden" name="scientific" value="<%=scientificName%>">
          <input type="submit" class="btn btn-success" value="Update">
      </form>
+     <%
+         if(session.getAttribute("username") != null) {
+     %>
      <form action="delete" method="post">
          <input type="hidden" name="scientific" value="<%=scientificName%>">
          <input type="submit" class="btn btn-danger" value="Delete">
      </form>
+     <%
+         }
+     %>
  </div>
 </body>
 </html>

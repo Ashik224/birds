@@ -14,6 +14,13 @@
 <body>
 <div class="container">
     <%
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        response.setHeader("Pragma", "no-cache");
+        response.setHeader("Expires", "0");
+
+        if(session.getAttribute("username") == null) {
+            response.sendRedirect("login.jsp");
+        }
         int id = (int) request.getAttribute("id");
         String name = request.getAttribute("name").toString();
         String scientificName = request.getAttribute("scientificName").toString();
