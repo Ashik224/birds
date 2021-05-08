@@ -29,7 +29,7 @@
     %>
  <div class="container" align="center">
      <br/><br/><br/>
-     <img src="./uploadedFiles/<%=image%>" alt="Details Image">
+     <img src="./uploadedFiles/<%=image%>" width="384" height="240" alt="Details Image">
      <h2><%=name%></h2>
      <h3>Scientific Name: <i><%=scientificName%></i></h3>
      <h4>Category: <b><%=category%></b></h4>
@@ -51,5 +51,7 @@
          }
      %>
  </div>
+    <br/><br/><br/>
+    <%@ include file="footer.jsp"%>
 </body>
 </html>

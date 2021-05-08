@@ -10,3 +10,8 @@
 #navbarSupportedContent > ul > li > a {
     color: white;
 }
+
+.about{
+    font-family: "Times New Roman", serif;
+    font-size: large;
+}

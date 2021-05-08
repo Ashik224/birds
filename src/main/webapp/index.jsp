@@ -3,6 +3,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="header.jsp"%>
+<%--<%@ include file="footer.jsp"%>--%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +26,7 @@
                 <div class="col-sm-4">
                     <br/><br/><br/><br/>
                     <div class="card">
-                        <img width="286" height="180" class="card-img-top" src="./uploadedFiles/${bird.getRealImage()}" alt="Card image cap">
+                        <img class="card-img-top" width="240" height="180" src="./uploadedFiles/${bird.getRealImage()}" alt="${bird.getRealImage()}">
                         <div class="card-body">
                             <h5 class="card-title">${bird.getName()}</h5>
                             <p class="card-text">${bird.getCategory()}</p>
@@ -38,7 +39,8 @@
                 </div>
             </c:forEach>
         </div>
-
     </div>
+    <br/><br/><br/>
+    <%@ include file="footer.jsp"%>
 </body>
 </html>
